@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="astro">
+  <main>
+    <h1>Resolutions</h1>
+    <section>
+      <h2>Inner Height/Width</h2>
+      <p>InnerHeight: <span id="inner-height">0</span></p>
+      <p>InnerWidth: <span id="inner-width">0</span></p>
+    </section>
+    <section>
+      <h2>Device resolution</h2>
+      <p>Heigth: <span id="device-height">0</span></p>
+      <p>Width: <span id="device-width">0</span></p>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  const innerHeight = document.getElementById("inner-height");
+  const innerWidth = document.getElementById("inner-width");
+  innerHeight.innerHTML = window.innerHeight.toString();
+  innerWidth.innerHTML = window.innerWidth.toString();
+
+	const deviceHeight = document.getElementById("device-height");
+  const deviceWidth = document.getElementById("device-width");
+  deviceHeight.innerHTML = window.screen.availHeight.toString();
+  deviceWidth.innerHTML = window.screen.availWidth.toString();
+
+  window.addEventListener("resize", () => {
+    innerHeight.innerHTML = window.innerHeight.toString();
+    innerWidth.innerHTML = window.innerWidth.toString();
+  });
+</script>
